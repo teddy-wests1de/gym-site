@@ -1,0 +1,14 @@
+:root {
+    /* Custom variables here, ex. Primary Colors */
+    --bg-color-1: hsla(100,100,100,.5);
+
+}
+
+/* Mobile First */
+body {
+    display: flex;
+    justify-content: center;
+}
+
+/* Media Queries */
+
