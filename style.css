@@ -1,6 +1,14 @@
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
 :root {
     /* Custom variables here, ex. Primary Colors */
-    --bg-color-1: hsla(100,100,100,.5);
+    --primary-color-1: hsl(0, 9%, 24%);
+    --primary-color-2: hsl(0, 0%, 100%);
+    
+    --accent-color: hsl(0, 89%, 31%);
+    /* --bg-color-1: hsl(0, 0%, 100%); */
+
 
 }
 
@@ -8,7 +16,272 @@
 body {
     display: flex;
     justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: hsl(0, 9%, 24%);
+}
+.container {
+    width: 90%;
+}
+.header {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 
+.logo {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-title {
+    font-size: 1.30rem;
+    font-style: italic;
+    font-weight: 800;
+}
+.nav {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: flex-start;
+    border: 1px solid var(--accent-color);
+    position: relative;
+    
+}
+.mobile-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: .5rem;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.fa-bars {
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu {
+    position: absolute;
+    right: 0;
+    z-index: 900;
+    top: 100%;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--primary-color-2);
+    padding: 0 1rem;
+}
+.menu.hidden {
+    display: none;
+}
+.menu .nav-item {
+    margin-top: .5rem;
+}
+.main {
+    position: relative;
+    display: grid;
+    grid-template-areas: "home" "services" "blogs" "testimonials" "about" "contact";
+    gap: 1rem;
+}
+.section {
+    position: relative;
+    margin: .5rem 0;
+}
+.section:nth-child(1) {
+    grid-area: home;
+}
+.section:nth-child(2) {
+    grid-area: services;
+}
+.section:nth-child(3) {
+    grid-area: blogs;
+}
+.latest-blogs {
+    border: 2px solid var(--accent-color);
+}
+.section:nth-child(4) {
+    grid-area: testimonials;
+}
+.section:nth-child(5) {
+    grid-area: about;
+    border: 2px solid var(--accent-color);
+}
+.section:nth-child(6) {
+    grid-area: contact;
+    border: 2px solid var(--accent-color);
+}
+.section-cards {
+    display: grid;
+    grid-template-areas: "strength" "fitness" "flexability" "weight-loss";
+    gap: 1rem;
+}
+.section-card:nth-child(1) {
+    grid-area: strength;
+}
+.section-card:nth-child(2) {
+    grid-area: fitness;
+}
+.section-card:nth-child(3) {
+    grid-area: flexability;
+}
+.section-card:nth-child(4) {
+    grid-area: weight-loss;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: .5rem;
+}
+.hero-image {
+    /* position: absolute; */
+    top: 0;
+}
+.hero-content {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 50%;
+}
+.hero-title {
+    color: var(--primary-color-2);
+    font-size: 1.2rem;
+}
+.hero-text {
+    font-size: .8rem;
+    color: var(--accent-color);
+}
+.hero-info {
+    color: var(--primary-color-2);
+    font-size: .5rem;
+}
+.call-to-action {
+    font-size: .5rem;
+    border: none;
+    background-color: var(--accent-color);
+    color: var(--primary-color-2);
+    border-radius: 50px;
+    margin: .5rem 0;
+    padding: 0.2rem .5rem;
+}
+.section-card {
+    border: 2px solid var(--accent-color);
+    /* margin: 1rem 0; */
+    padding: .5rem;
+    background-color: hsla(0, 22%, 90%, 0.667);
+}
+.section-card .card-title {
+    font-size: 1rem;
+}
+/* .latest-blogs {
+    margin: 1rem 0;
+} */
+.blog-post {
+    margin: .5rem;
+}
+.testimonial {
+    border: 2px solid var(--accent-color);
+    margin: .5rem 0;
+}
+.form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.form-field {
+    width: 80%;
+}
+.btn-submit, .text-field {
+    width: 100%;
+}
+h3 {
+    font-size: 1rem;
+}
+.testimonial-content {
+    display: grid;
+    grid-template-areas: "testimonial1" "testimonial2" "testimonial3";
+    gap: 1rem;
+}
+
+.testimonial-title, .info, .about-description {
+    padding: .5rem;
+}
+/* -------- All main items above this line --------------- */
+.footer {
+    background-color: #433838;
+    height: 100px;
+    width: 100%;
+    color: #fff;
+    font-size: small;
+}
+.attribution {
+    display: flex;
+    justify-content: center;
+}
 /* Media Queries */
 
+@media (min-width: 768px) {
+    .section-cards {
+        grid-template-areas: "strength fitness" "flexability weight-loss";
+    }
+    .hero-content {
+        top: 20%;
+    }
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    .hero-text {
+        font-size: 1rem;
+    }
+    .hero-info {
+        font-size: .8rem;
+    }
+    .call-to-action {
+        font-size: .8rem;
+    }
+    
+}
+
+@media (min-width: 1024px) {
+    .main {
+        grid-template-areas:  "home home home" "services services blogs" "testimonials testimonials testimonials" "about contact contact";
+    }
+
+    .form {
+        align-items: start;
+    }
+    .testimonial-content {
+        grid-template-areas: "testimonial1 testimonial2 testimonial3";
+    }
+
+    .testimonial:nth-child(1) {
+        grid-area: testimonial1;
+    }
+    .testimonial:nth-child(2) {
+        grid-area: testimonial2;
+    }
+    .testimonial:nth-child(3) {
+        grid-area: testimonial3;
+    }
+    .hero-content {
+        top: 25%;
+    }
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .hero-text {
+        font-size: 1.2rem;
+    }
+    .hero-info {
+        font-size: 1rem;
+    }
+    .call-to-action {
+        font-size: 1rem;
+    }
+}
