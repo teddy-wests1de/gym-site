@@ -36,7 +36,7 @@ body {
     justify-content: center;
 }
 .main-title {
-    font-size: 1.30rem;
+    font-size: 1.3rem;
     font-style: italic;
     font-weight: 800;
 }
@@ -227,6 +227,9 @@ h3 {
 /* Media Queries */
 
 @media (min-width: 768px) {
+    .main-title {
+        font-size: 1.8rem;
+    }
     .section-cards {
         grid-template-areas: "strength fitness" "flexability weight-loss";
     }
@@ -249,6 +252,9 @@ h3 {
 }
 
 @media (min-width: 1024px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
     .main {
         grid-template-areas:  "home home home" "services services blogs" "testimonials testimonials testimonials" "about contact contact";
     }
