@@ -20,30 +20,34 @@ body {
     font-size: 16px;
     color: hsl(0, 9%, 24%);
 }
-/* .container {
+.container {
     width: 80%;
-} */
+    max-width: 1200px;
+}
 
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #4338388e;
+    background-color: #433838cb;
     z-index: 999;
 }
-.login.hidden {
-    display: none;
+.form {
+    background-color: var(--primary-color-2);
+    padding: 2rem;
+}
+.btn-account {
+    width: 100%;
 }
 .header {
-    position: relative;
-    padding-top: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -51,31 +55,31 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1rem;
+    margin: 1rem 0;
 }
 .company-name {
     display: none;
 }
 .main-title {
+    display: none;
     font-size: 1rem;
     font-style: italic;
     font-weight: 800;
 }
 .nav {
-    /* position: absolute; */
-    top: 80%;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 50%;
+    position: absolute;
+    top: 100%;
+    inset: 0 0 0 50%;
+    right: 10%;
+    z-index: 900;
 
 }
 .mobile-btn {
     position: absolute;
-    bottom: 0;
-    right: 1rem;
-    margin-top: .5rem;
+    z-index: 999;
+    top: 0;
+    right: 10%;
+    margin: 1rem 0;
     display: flex;
     align-items: end;
     justify-content: center;
@@ -88,62 +92,70 @@ body {
     font-size: 1.8rem;
 }
 .menu {
-    position: absolute;
-    right: 0;
     z-index: 900;
-    top: 100%;
-    padding: .5rem;
+    margin-top: 4rem;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
     align-items: center;
     background-color: var(--primary-color-2);
-    padding: 0 1rem;
     width: 100%;
+    padding-bottom: 1rem;
 }
-.menu.hidden {
+.hidden {
     display: none;
 }
-.menu .nav-item {
-    margin: .5rem 0;
-    padding: 0 1rem;
-    /* border: 1px solid red; */
-}
-.menu .nav-item:last-child {
-    margin-bottom: 2rem;
 
-}
-.menu .nav-item:last-child .nav-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .fa-user {
     border: 2px solid var(--accent-color);
     border-radius: 50%;
-    padding: .7rem .8rem;
+    padding: .2rem .3rem;
     font-size: 1.5rem;
 }
+
+.profile {
+    text-align: center;
+    cursor: pointer;
+}
+.profile:hover {
+    color: var(--accent-color);
+}
 .login-menu {
+    position: absolute;
+    right: 10%;
+    /* top: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-.profile {
-    text-align: center;
+    align-items: center;
+    background-color: var(--primary-color-2);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 0 1rem;
 }
 .login-menu.hidden {
     display: none;
+}
+.menu:nth-child(6) {
+  margin-bottom: 1rem;
+}
+.login-menu .nav-link {
+    width: 32px;
+}
+.nav-link:hover {
+    color: var(--accent-color);
 }
 .main {
     position: relative;
     display: grid;
     grid-template-areas: "home" "services" "blogs" "testimonials" "about" "contact";
-    gap: 1rem;
+    gap: .5rem 1rem;
 }
 .section {
     position: relative;
-    margin: .5rem 0;
+    /* margin: .5rem 0; */
 }
+
 .section:nth-child(1) {
     grid-area: home;
 }
@@ -185,9 +197,9 @@ body {
     grid-area: weight-loss;
 }
 
-.section-title {
-    font-size: 1.2rem;
-    font-weight: 600;
+.section-title, .hero-title {
+    font-size: 1.35rem;
+    font-weight: 700;
     margin: .5rem;
 }
 .hero-image {
@@ -249,7 +261,7 @@ body {
     padding: 1rem;
 }
 .form-field {
-    width: 80%;
+    margin: .5rem;
 }
 .btn-submit, .text-field {
     width: 100%;
@@ -278,7 +290,8 @@ h3 {
     display: flex;
     justify-content: center;
 }
-/* Media Queries */
+
+/* -------------- Media Queries ----------------------------------------*/
 
 @media (min-width: 768px) {
     .main-title {
@@ -314,10 +327,19 @@ h3 {
     .main {
         grid-template-areas:  "home home home" "services services blogs" "testimonials testimonials testimonials" "about contact contact";
     }
-    .menu.hidden {
+    .mobile-btn {
         display: none;
     }
-
+    .menu {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        width: auto;
+        margin: unset;
+    }
+    .nav {
+        position: unset;
+    }
     .form {
         align-items: start;
     }

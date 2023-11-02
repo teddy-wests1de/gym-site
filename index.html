@@ -12,8 +12,9 @@
 <body>
     <div class="container">
         <div class="login-screen">
-            <div class="login screen-login">
+            <div class="login screen-login hidden">
                 <form action="" class="form">
+                    <h2>Login</h2>
                     <div class="form-field"><input type="text" name="username"></div>
                     <div class="form-field"><input type="password" name="login-password" id="login-password"></div>
                     <div class="form-field"><button type="submit" class="btn-account btn-login">Login</button></div>
@@ -21,7 +22,8 @@
             </div>
             <div class="login screen-register hidden">
                 <form action="" class="form">
-                    <input type="text" name="username">
+                    <h2>Register</h2>
+                    <div class="form-field"><input type="text" name="username"></div>
                     <div class="form-field"><input type="password" name="login-password" id="login-password"></div>
                     <div class="form-field"><input type="password" name="confirm-password" id="confirm-password"></div>
                     <div class="form-field"><button type="submit" class="btn-account btn-register">Register</button></div>
@@ -36,23 +38,24 @@
                 <h1 class="main-title">Rustic Momentum</h1>
             </div>
             <nav class="nav">
-                <div class="mobile-btn"><i class="fa-solid fa-bars"></i></div>
-                <ul class="menu hidden">
+                <ul class="menu">
                     <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
                     <li class="nav-item"><a href="#blog" class="nav-link">Blogs</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                    <li class="nav-item" ><a href="#login" class="nav-link">
+                    <li class="nav-item admin-menu" >
+                        <a href="#login" class="nav-link">
                             <i class="fa-solid fa-user" data-type="login"></i>
                         </a>
                         <div class="login-menu">
-                            <div class="account-login profile">Login</div>
-                            <div class="account-register profile">Register</div>
+                            <div class="account-login profile" data-action="login">Login</div>
+                            <div class="account-register profile" data-action="register">Register</div>
                         </div>
                     </li>
                 </ul>
             </nav>
+            <div class="mobile-btn"><i class="fa-solid fa-bars"></i></div>
         </header>
         <main class="main">
             <section class="section" id="home">
@@ -73,7 +76,7 @@
                 </div>
             </section>
             <section class="section" id="services">
-                <h2 class="section-title">Services on Offer</h2>
+                <h2 class="section-title">We offer the following at our facilities</h2>
                 
                 <div class="section-cards">
                     <div class="section-card">
