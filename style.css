@@ -120,7 +120,7 @@ body {
 .profile:hover {
     color: var(--accent-color);
 }
-.login-menu {
+.login-menu, .logout-menu {
     position: absolute;
     right: 10%;
     /* top: 100%; */
@@ -139,7 +139,7 @@ body {
 .menu:nth-child(6) {
   margin-bottom: 1rem;
 }
-.login-menu .nav-link {
+.admin-menu .nav-link {
     width: 32px;
 }
 .nav-link:hover {
@@ -278,6 +278,11 @@ h3 {
 .testimonial-title, .info, .about-description {
     padding: .5rem;
 }
+/* .logout-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
 /* -------- All main items above this line --------------- */
 .footer {
     background-color: #433838;
@@ -290,7 +295,21 @@ h3 {
     display: flex;
     justify-content: center;
 }
-
+.back-to-top {
+    background: hsla(0, 22%, 90%, 0.667);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: fixed;
+    right: 5%;
+    bottom: 5rem;
+    z-index: 999;
+}
 /* -------------- Media Queries ----------------------------------------*/
 
 @media (min-width: 768px) {
