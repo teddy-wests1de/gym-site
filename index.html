@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rustic Momentum</title>
+    <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="css-reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="gym-app.js" defer></script>
@@ -20,19 +21,21 @@
             <div class="login screen-login hidden">
                 <form action="" class="form">
                     <h2>Login</h2>
-                    <div class="form-field"><input type="text" name="username"></div>
-                    <div class="form-field"><input type="password" name="login-password" id="login-password"></div>
+                    <div class="form-field"><input type="text" name="username" placeholder="john.doe"></div>
+                    <div class="form-field"><input type="password" name="password" id="password" placeholder="Password"></div>
                     <div class="form-field"><button type="submit" class="btn-account btn-login">Login</button></div>
                 </form>
             </div>
             <div class="login screen-register hidden">
-                <form action="" class="form">
+                <form action="" class="form register-form">
                     <h2>Register</h2>
-                    <div class="form-field"><input type="text" name="username"></div>
-                    <div class="form-field"><input type="password" name="login-password" id="login-password"></div>
-                    <div class="form-field"><input type="password" name="confirm-password" id="confirm-password"></div>
+                    <div class="form-field"><input type="text" name="first-name" id="first-name" placeholder="ex._John"></div>
+                    <div class="form-field"><input type="text" name="last-name" id="last-name" placeholder="ex._Doe"></div>
+                    <div class="form-field"><input type="password" name="new-password" id="new-password" placeholder="New Password"></div>
+                    <div class="form-field"><input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"></div>
                     <div class="form-field"><button type="submit" class="btn-account btn-register">Register</button></div>
                 </form>
+                
             </div>
         </div>
         <!-- end -->
@@ -223,6 +226,10 @@
                         <div class="form-field"><button type="submit" id="submit" class="">submit</button></div>
                     </form>
                 </div>
+            </section>
+            <section class="section" id="user-profile">
+                <h2>profile</h2>
+                <h3 class="profile-info"></h3>
             </section>
         </main>
         <!-- *** --- Main end ---*** -->

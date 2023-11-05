@@ -11,6 +11,17 @@ const accountLogin = document.querySelector('.account-login');
 const accountRegister = document.querySelector('.account-register')
 const btnProfile = document.querySelector('.btn-profile');
 const welcomeText = document.querySelector('.welcome-text');
+const sections = document.querySelectorAll('section');
+const profileInfo = document.querySelector('.profile-info');
+
+// Register Users
+const firstName = document.querySelector('#first-name');
+const lastName = document.querySelector('#last-name');
+const newPassword = document.querySelector('#new-password');
+const confirmPassword = document.querySelector('#confirm-password');
+const btnRegister = document.querySelector('.btn-register');
+const registerForm = document.querySelector('.register-form');
+
 class User {
     constructor(firstName, lastName) {
         this.firstName = firstName;
@@ -48,10 +59,11 @@ class Member extends User {
 // }
 
 class Trainer extends User {
-    constructor(firstName, lastName, memberID, trainerID) {
+    #password;
+    constructor(firstName, lastName, password, trainerID) {
         super(firstName, lastName);
-        this.memberID = memberID;
         this.trainerID = trainerID;
+        this.#password = password;
     }
 }
 
@@ -70,11 +82,9 @@ class App {
         
         // Toggle Admin/Profle menu
         btnProfile.addEventListener('click', this._adminOptions.bind(this))
-
         adminMenu.addEventListener('click', this._adminOptions.bind(this));
-
-        // const blog = new Blog('Test', 'Testing Blog');
-        this._registerUser();
+        btnRegister.addEventListener('click', this._registerUser.bind(this));
+        
     }
 
     _toggleMenu(e) {
@@ -110,7 +120,7 @@ class App {
 
         // Hide main menu on item clicked
         if(!clicked.classList.contains('btn-profile')) {
-            console.log(clicked)
+            // console.log(clicked)
             menu.classList.add('hidden');
         }
 
@@ -122,14 +132,36 @@ class App {
         }
         if(e.target.dataset.type !== 'login') {
             adminMenu.classList.add('hidden');
-            console.log(adminMenu)
+            // console.log(adminMenu)
+        }
+
+        if(e.target.dataset.action === 'register') {
+            document.querySelector(`.screen-${e.target.dataset.action}`).classList.remove('hidden');
         }
     }
+    _validate (...inputs) {
+        console.log(Array.from(inputs));
+        Array.from(inputs).forEach(i => {
+            if(i !== '') {
+                console.log('True');
+            }
+        })
 
-    _registerUser(user) {
-        const trainer1 = new Trainer('Riccardo', 'Rosseau', 123, 111);
-        this.#users.push(trainer1);
+     }
+
+    _registerUser(e) {
+        e.preventDefault();
+        // if(this._validate(firstName.value, lastName.value, newPassword.value)) {
+        const user = new Trainer(firstName.value, lastName.value, newPassword.value, 111);
+        this.#users.push(user);
         this._listUsers();
+        this._validate(firstName.value, lastName.value, newPassword.value);
+        
+        this._showSuccess();
+        // if(e.target.closest('.success-screen')) {
+        //     // e.target.parentNode.parentNode.parentNode.classList.add('hidden');
+        // }
+        console.log(e.target);
     }
 
     _listUsers () {
@@ -139,7 +171,8 @@ class App {
         // e.preventDefault();
         login.forEach(l =>  l.classList.add('hidden'));
         if(this.#loggedIn === true) {
-            welcomeText.textContent = `Welcome ${this.#users[0].firstName}`
+            welcomeText.textContent = `Welcome ${this.#users[0].firstName}`;
+            this._showProfile(this.#users[0]);
         } else {
             welcomeText.textContent = 'Successfully Logged out...!';
         }
@@ -168,11 +201,35 @@ class App {
         </div>
         `
         adminMenu.insertAdjacentHTML('beforeend', html);
+        this._hideProfile();
     }
 
 
     _showProfile(user) {
-        
+        const sectionList = Array.from(sections)
+        sectionList.forEach(sl => sl.style.display = 'none');
+        sectionList[0].style.display = 'block';
+        sectionList[sectionList.length -1].style.display = 'block';
+
+        profileInfo.textContent = `This is the profile page for ${user._getFullName()}`
+    }
+    _hideProfile() {
+        const sectionList = Array.from(sections);
+        sectionList.forEach(sl => sl.style.display = 'block');
+        sectionList[sectionList.length -1].style.display = 'none';
+    }
+
+    _showSuccess() {
+        registerForm.innerHTML = '';
+        const html = `
+        <div class="success-screen">
+            <div class="success-icon"><i class="fa-solid fa-circle-check" style="color: #18b630;"></i></div>
+            <div class="success-message">
+                <h3 class="success">User registered successfully...!</h3>
+            </div>
+        </div>
+        `
+        registerForm.insertAdjacentHTML("afterbegin", html);
     }
 }
 
