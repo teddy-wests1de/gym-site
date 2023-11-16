@@ -87,6 +87,7 @@ class App {
         btnRegister.addEventListener('click', this._registerUser.bind(this));
      
         screenRegister.addEventListener('click', this._screenRegister.bind(this));
+        registerForm.addEventListener('submit', this._showSuccess.bind(this));
     }
 
     _toggleMenu(e) {
@@ -152,7 +153,7 @@ class App {
 
     _registerUser(e) {
         e.preventDefault();
-        // this._displayRegisterForm();
+        this._displayRegisterForm();
         // if(this._validate(firstName.value, lastName.value, newPassword.value)) {
         const user = new Trainer(firstName.value, lastName.value, newPassword.value, 111);
         this.#users.push(user);
@@ -223,9 +224,8 @@ class App {
         e.preventDefault();
         const closeWindow = e.target;
         if(e.target.classList.contains('screen-register')){
-        console.log(closeWindow);
         screenRegister.classList.add('hidden');
-        this._displayRegisterForm();
+        
         }
     }
     _displayRegisterForm() {
@@ -243,7 +243,7 @@ class App {
         // screenRegister.insertAdjacentHTML('afterbegin', html);
     }
     _showSuccess() {
-        registerForm.innerHTML = '';
+        screenRegister.innerHTML = '';
         const html = `
         <div class="success-screen">
             <div class="success-icon"><i class="fa-solid fa-circle-check" style="color: #18b630;"></i></div>
@@ -252,7 +252,7 @@ class App {
             </div>
         </div>
         `
-        registerForm.insertAdjacentHTML("afterbegin", html);
+        screenRegister.insertAdjacentHTML("afterbegin", html);
     }
 }
 
