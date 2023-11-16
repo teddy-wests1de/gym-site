@@ -21,6 +21,7 @@ const newPassword = document.querySelector('#new-password');
 const confirmPassword = document.querySelector('#confirm-password');
 const btnRegister = document.querySelector('.btn-register');
 const registerForm = document.querySelector('.register-form');
+const screenRegister = document.querySelector('.screen-register');
 
 class User {
     constructor(firstName, lastName) {
@@ -84,7 +85,8 @@ class App {
         btnProfile.addEventListener('click', this._adminOptions.bind(this))
         adminMenu.addEventListener('click', this._adminOptions.bind(this));
         btnRegister.addEventListener('click', this._registerUser.bind(this));
-        
+     
+        screenRegister.addEventListener('click', this._screenRegister.bind(this));
     }
 
     _toggleMenu(e) {
@@ -123,7 +125,6 @@ class App {
             // console.log(clicked)
             menu.classList.add('hidden');
         }
-
     }
 
     _adminOptions(e) {
@@ -140,10 +141,10 @@ class App {
         }
     }
     _validate (...inputs) {
-        console.log(Array.from(inputs));
+        // console.log(Array.from(inputs));
         Array.from(inputs).forEach(i => {
             if(i !== '') {
-                console.log('True');
+                // console.log('True');
             }
         })
 
@@ -151,6 +152,7 @@ class App {
 
     _registerUser(e) {
         e.preventDefault();
+        // this._displayRegisterForm();
         // if(this._validate(firstName.value, lastName.value, newPassword.value)) {
         const user = new Trainer(firstName.value, lastName.value, newPassword.value, 111);
         this.#users.push(user);
@@ -158,14 +160,11 @@ class App {
         this._validate(firstName.value, lastName.value, newPassword.value);
         
         this._showSuccess();
-        // if(e.target.closest('.success-screen')) {
-        //     // e.target.parentNode.parentNode.parentNode.classList.add('hidden');
-        // }
         console.log(e.target);
     }
 
     _listUsers () {
-        console.log(this.#users);
+        // console.log(this.#users);
     }
     _checkLogin(e) {
         // e.preventDefault();
@@ -173,8 +172,10 @@ class App {
         if(this.#loggedIn === true) {
             welcomeText.textContent = `Welcome ${this.#users[0].firstName}`;
             this._showProfile(this.#users[0]);
+            this.#loggedIn = false;
         } else {
             welcomeText.textContent = 'Successfully Logged out...!';
+            this.#loggedIn = true;
         }
     }
     
@@ -218,7 +219,29 @@ class App {
         sectionList.forEach(sl => sl.style.display = 'block');
         sectionList[sectionList.length -1].style.display = 'none';
     }
-
+    _screenRegister(e) {
+        e.preventDefault();
+        const closeWindow = e.target;
+        if(e.target.classList.contains('screen-register')){
+        console.log(closeWindow);
+        screenRegister.classList.add('hidden');
+        this._displayRegisterForm();
+        }
+    }
+    _displayRegisterForm() {
+        screenRegister.innerHTML = '';
+        // const html = `
+        // <form action="" class="form register-form">
+        //     <h2>Register</h2>
+        //     <div class="form-field"><input type="text" name="first-name" id="first-name" placeholder="ex._John"></div>
+        //     <div class="form-field"><input type="text" name="last-name" id="last-name" placeholder="ex._Doe"></div>
+        //     <div class="form-field"><input type="password" name="new-password" id="new-password" placeholder="New Password"></div>
+        //     <div class="form-field"><input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"></div>
+        //     <div class="form-field"><button type="submit" class="btn-account btn-register">Register</button></div>
+        // </form>
+        // `
+        // screenRegister.insertAdjacentHTML('afterbegin', html);
+    }
     _showSuccess() {
         registerForm.innerHTML = '';
         const html = `
