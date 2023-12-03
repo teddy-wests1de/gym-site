@@ -19,9 +19,9 @@
         <!-- Login & Register screens -->
         <div class="login-screen">
             <div class="login screen-login hidden">
-                <form action="" class="form">
+                <form action="" class="form login-form">
                     <h2>Login</h2>
-                    <div class="form-field"><input type="text" name="username" placeholder="john.doe"></div>
+                    <div class="form-field"><input type="text" name="username" id="username" placeholder="john.doe"></div>
                     <div class="form-field"><input type="password" name="password" id="password" placeholder="Password"></div>
                     <div class="form-field"><button type="submit" class="btn-account btn-login">Login</button></div>
                 </form>
@@ -58,10 +58,10 @@
                         <a href="#login" class="nav-link">
                             <i class="fa-solid fa-user btn-profile" data-type="login"></i>
                         </a>
-                        <div class="admin-menu hidden">
-                            <div class="account-login profile" data-action="login">Login</div>
-                            <div class="account-register profile" data-action="register">Register</div>
-                        </div>
+                        <ul class="admin-menu hidden">
+                            <li class="account-login profile" data-action="login">Login</li>
+                            <li class="account-register profile" data-action="register">Register</li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -227,7 +227,7 @@
                 </div>
             </section>
             <section class="section" id="user-profile">
-                <h2>profile</h2>
+                <h2>Profile</h2>
                 <h3 class="profile-info"></h3>
             </section>
         </main>
